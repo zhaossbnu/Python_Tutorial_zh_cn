@@ -1,1 +1,2 @@
 # Python_Tutorial_zh_cn
+需要用xeLaTeX编译至少两次。

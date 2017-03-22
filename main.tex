@@ -1,0 +1,50 @@
+\input{data/config}
+
+\begin{document}
+\frontmatter
+\include{data/cover}
+\clearpage{\pagestyle{empty}\cleardoublepage} % 清除章节结束后空白页的版式
+\pagenumbering{Roman} % 页码显示为大写罗马字母
+\tableofcontents
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\mainmatter
+\pagenumbering{arabic} % 页码显示为阿拉伯数字
+\include{data/introduction}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\fancyhead[ER,OL]{\nouppercase{\chaptername\hspace{0.8em}\leftmark}} %左页的右页眉 右页的左页眉   正文章节
+\include{data/chapter01}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter02}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter03}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter04}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter05}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter06}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter07}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter08}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter09}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter10}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter11}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter12}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter13}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter14}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter15}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\include{data/chapter16}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+%\chapter*{}
+%\addcontentsline{toc}{chapter}{索引} % 本章也放在目录中
+%\printindex
+\end{document}
