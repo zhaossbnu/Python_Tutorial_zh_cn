@@ -235,7 +235,7 @@ ValueError: I/O operation on closed file
 True
 \end{lstlisting}
 文件对象还有一些不太常用的附加方法，比如 \texttt{isatty()}和 \texttt{truncate()}在库参考手册中有文件对象的完整指南。
-\subsection{使用 \texttt{json}存储结构化数据}
+\subsection{使用 \texttt{json} 存储结构化数据}
 从文件中读写字符串很容易。数值就要多费点儿周折，因为 \texttt{read()} 方法只会返回字符串，应将其传入 \texttt{int()} 这样的函数，就可以将 \verb|'123'| 这样的字符串转换为对应的数值 123。当你想要保存更为复杂的数据类型，例如嵌套的列表和字典，手工解析和序列化它们将变得更复杂。
 
 好在用户不是非得自己编写和调试保存复杂数据类型的代码，Python 允许你使用常用的数据交换格式 \href{http://json.org/}{\textit{JSON（JavaScript Object Notation）}}。标准模块 \texttt{json} 可以接受 Python 数据结构，并将它们转换为字符串表示形式；此过程称为 \textit{序列化}。从字符串表示形式重新构建数据结构称为 \textit{反序列化}。序列化和反序列化的过程中，表示该对象的字符串可以存储在文件或数据中，也可以通过网络连接传送给远程的机器。

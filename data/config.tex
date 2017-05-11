@@ -3,6 +3,7 @@
 \usepackage{xeCJK}
 \usepackage[compact]{titlesec} % 标题设置  不用ctexcap的情况下 compact缩减标题前后的空白
 \usepackage{titletoc} % 目录设 置在不用ctexcap的情况下
+\usepackage{tocloft} % 目录设 置在不用ctexcap的情况下
 \usepackage[tracking=alltext,letterspace=20]{microtype} % 字距修改
 \usepackage{float}
 \usepackage{caption}
@@ -18,25 +19,45 @@
 \usepackage{tabularx}
 \usepackage{colortbl} % 彩色表格
 \usepackage{nameref} % 层次标题引用
+%\usepackage{tocbibind} %将目录、参考文献加入目录
 \usepackage[toc,lof,lot]{multitoc} % 目录 插图 表格目录多栏 toc->目录 lof->图目录 lot->表目录
 %\usepackage{makeidx} % 索引
 %\makeindex
 %\usepackage{framed}
-\usepackage[pagebackref,xetex,CJKbookmarks,bookmarksnumbered,bookmarksopen,colorlinks,linkcolor=blue,urlcolor=blue,pdfpagemode=UseOutlines,pdfstartview=FitV,pdfauthor={zhaossbnu}]{hyperref}
+\definecolor{mylinkcolor}{RGB}{53,95,124}
+\definecolor{myurlcolor}{RGB}{55,112,99}
+\usepackage{hyperref}
+\hypersetup{
+    pagebackref,
+    xetex,
+    CJKbookmarks,
+    bookmarksnumbered,
+    bookmarksopen,
+    colorlinks,
+    linkcolor=mylinkcolor,
+    urlcolor=myurlcolor,
+    pdfpagemode=UseOutlines,
+    pdfstartview=FitV,
+    pdftitle={Python 教程},
+    pdfauthor={zhaossbnu}
+}
 \usepackage[left=2.5cm,right=2.0cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage{fancyvrb}
 \usepackage[perpage,stable]{footmisc} %标题中可以有脚注 脚注按页重置
 \usepackage{cprotect} %命令保护
 %\usepackage{showidx} % 在正文的左边显示索引 用于校对
 \usepackage{fancyhdr}
-%\zihao{5}
 \setmainfont[BoldFont={timesbd.ttf},ItalicFont={timesi.ttf},BoldItalicFont={timesbi.ttf}]{times.ttf}
 \setsansfont[BoldFont={texgyreheros-bold.otf},ItalicFont={texgyreheros-italic.otf},BoldItalicFont={texgyreheros-bolditalic.otf}]{texgyreheros-regular.otf}
 \setmonofont[BoldFont={courbd.ttf},ItalicFont={couri.ttf},BoldItalicFont={courbi.ttf}]{cour.ttf}
-\setCJKmainfont[BoldFont={AdobeHeitiStd-Regular.otf}, ItalicFont={AdobeKaitiStd-Regular.otf}]{simsun.ttc}
-\setCJKsansfont[BoldFont={msyhbd.ttf},ItalicFont={batang.ttc}]{msyh.ttf}
-\setCJKmonofont{AdobeFangsongStd-Regular.otf} % 这个只是为了应对代码中显示文字
-\setCJKfamilyfont{fangsong}{[AdobeFangsongStd-Regular.otf]}
+\setCJKmainfont[BoldFont={simhei.ttf}, ItalicFont={simkai.ttf}]{simsun.ttc}
+\setCJKsansfont[BoldFont={msyhbd.ttf}]{msyh.ttf}
+\setCJKmonofont{simfang.ttf} % 这个只是为了应对代码中显示文字
+
+\setCJKfamilyfont{kaishu}{[simkai.ttf]}
+\newcommand{\kaishu}{\CJKfamily{kaishu}}
+\newcommand*{\textkaishu}[1]{\CJKfamily{kaishu} #1}
+\setCJKfamilyfont{fangsong}{[simfang.ttf]}
 \newcommand{\fangsong}{\CJKfamily{fangsong}}
 \newcommand*{\textfangsong}[1]{\CJKfamily{fangsong} #1}
 \setCJKfamilyfont{lishu}{[simli.ttf]}
@@ -45,16 +66,17 @@
 \setCJKfamilyfont{youyuan}{[simyou.ttf]}
 \newcommand{\youyuan}{\CJKfamily{youyuan}}
 \newcommand*{\textyouyuan}[1]{\CJKfamily{youyuan} #1}
-\renewcommand{\Nameref}[1]{\textcolor{blue}{\textit{\ref{#1}~\nameref{#1}~第\pageref{#1}页}}}
+
+\renewcommand{\Nameref}[1]{\textcolor{mylinkcolor}{\textit{\ref{#1}~\nameref{#1}~第\pageref{#1}页}}}
 \linespread{1.25} % 1.5倍行距
 \parindent=2.2em % 段落缩进两个汉字
 %\baselineskip = 17.68pt 这个只能在正文中其作用
 \setcounter{tocdepth}{3} % 设置目录显示深度
 %\renewcommand{\abstractname}{摘要}
 \renewcommand{\appendixname}{附录}
-\renewcommand{\bibname}{\huge 参考文献}
-\renewcommand{\chaptername}{第~\thechapter~章}
-\renewcommand{\contentsname}{目录}
+\renewcommand{\bibname}{参考文献}
+\renewcommand{\chaptername}{\bfseries 第~\thechapter~章}
+\renewcommand{\contentsname}{\hspace*{\fill}目\quad 录\hspace*{\fill}}
 \renewcommand{\indexname}{索引}
 \renewcommand{\listfigurename}{插图}
 \renewcommand{\listtablename}{表格}
@@ -66,16 +88,26 @@
 \fancyfoot[C]{\thepage} % 左页和右页的中页脚
 % 以上配置不会改变 章节首页的版式（plain）
 
-% 层次标题设置 ctexcap宏包s
+% 层次标题设置 ctexcap宏包
 %\CTEXsetup[number={\arabic{chapter}}]{chapter}
 %\CTEXsetup[format+={\flushleft}]{section} % section标题左对齐
 \titleformat{\chapter}{\bf\centering\huge}{第~\thechapter~章}{20pt}{\bf}
+
+\renewcommand\cftdot{$\cdot$}
+\renewcommand\cftdotsep{2}
+
+\settowidth\cftchapnumwidth{第99章}
+\renewcommand\cftchappresnum{第}
+\renewcommand\cftchapaftersnum{章}
+\renewcommand\cftchapaftersnumb{\hspace{0.5em}}
+\renewcommand\cftsecaftersnumb{\hspace{0.5em}}
+
 \setlength{\columnsep}{30pt} % 两栏目录间隔30pt
 \lstset{
 	%backgroundcolor=\color[rgb]{0.9,0.9,0.9}, %设置背景颜色
     language=Python,
     tabsize=4,    %tab大小
-    basicstyle=\ttfamily\footnotesize,	% 代码字体 大小
+    basicstyle=\ttfamily\small,	% 代码字体 大小
     upquote=true,
     aboveskip={0.5\baselineskip}, %距离上文的距离
     columns=flexible,
@@ -99,8 +131,9 @@
     %escapeinside={\{}{\}}, % if you want to add LaTeX within your code
     % title=\lstname % 显示用\lstinputlisting导入的文件名
 }
+
 \newenvironment{Warning}[1]{%
 \par \noindent\raisebox{0.5\baselineskip}[2pt]{\rule{\textwidth}{1pt}}\vspace{-0.5\baselineskip}%
 \begin{compactdesc}
 \item[#1:]}
-{\end{compactdesc}\noindent\raisebox{0.5\baselineskip}[2pt]{\rule{\textwidth}{1pt}}\vspace{-0.5\baselineskip}\par}
+{\end{compactdesc}\noindent\raisebox{0.5\baselineskip}[2pt]{\rule{\textwidth}{1pt}}\vspace{-0.5\baselineskip}\par} 

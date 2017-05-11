@@ -1,7 +1,7 @@
 \chapter{深入Python流程控制\label{ControlFlowTools}}
 \markboth{深入Python流程控制}{}
 除了前面介绍的 \texttt{while}语句，Python 还从其它语言借鉴了一些流程控制功能，并有所改变。
-\section{\texttt{if}语句}
+\section{\texttt{if} 语句}
 也许最有名的是 \texttt{if} 语句。例如:
 \begin{lstlisting}
 >>> x = int(input("Please enter an integer: "))
@@ -19,7 +19,7 @@ Please enter an integer: 42
 More
 \end{lstlisting}
 可能会有零到多个 \texttt{elif}部分，\texttt{else}是可选的。关键字 \texttt{elif} 是 \texttt{else if}的缩写，这个可以有效地避免过深的缩进。\texttt{if ... elif ... elif ...} 序列用于替代其它语言中的 \texttt{switch}或 \texttt{case}语句。
-\section{\texttt{for}语句}
+\section{\texttt{for} 语句}
 Python 中的 \texttt{for}语句和C或Pascal中的略有不同。通常的循环可能会依据一个等差数值步进过程（如 Pascal），或由用户来定义迭代步骤和中止条件（如 C ），Python 的 \texttt{for} 语句依据任意序列（链表或字符串）中的子项，按它们在序列中的顺序来进行迭代。例如（没有暗指）：
 \begin{lstlisting}
 >>> # Measure some strings:
@@ -40,7 +40,7 @@ defenestrate 12
 >>> words
 ['defenestrate', 'cat', 'window', 'defenestrate']
 \end{lstlisting}
-\section{\texttt{range()}函数}
+\section{\texttt{range()} 函数}
 如果你需要一个数值序列，内置函数 \texttt{range()}会很方便，它生成一个等差级数链表:
 \begin{lstlisting}
 >>> for i in range(5):
@@ -94,7 +94,7 @@ range(0, 10)
 \end{lstlisting}
 
 稍后我们会看到更多返回可迭代（对象）和以可迭代（对象）作为参数的函数。
-\section{\texttt{break}和\texttt{continue}语句，以及循环中的\texttt{else}语句}
+\section{\texttt{break} 和 \texttt{continue} 语句，以及循环中的 \texttt{else} 语句}
 \texttt{break} 语句和 C 中的类似，用于跳出最近的一级 \texttt{for}或 \texttt{while}循环。
 
 循环可以有一个 \texttt{else}子句；它在循环迭代完整个列表（对于 \texttt{for}）或执行条件为 \texttt{false}（对于 \texttt{while}）时执行，但循环被 \texttt{break}中止的情况下不会执行。以下搜索素数的示例程序演示了这个子句:
@@ -137,7 +137,7 @@ Found a number 7
 Found an even number 8
 Found a number 9
 \end{lstlisting}
-\section{\texttt{pass}语句}
+\section{\texttt{pass} 语句}
 \texttt{pass}语句什么也不做。它用于那些语法上必须要有什么语句，但程序什么也不做的场合，例如:
 \begin{lstlisting}
 >>> while True:
